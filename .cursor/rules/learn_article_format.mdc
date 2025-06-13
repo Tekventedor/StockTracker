@@ -1,0 +1,53 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+When working with articles in the learn section:
+
+1. Frontmatter Requirements:
+```yaml
+---
+title: "Article Title with Proper Capitalization"
+date: YYYY-MM-DD
+description: "One-sentence summary of the article content"
+topics: ["Topic1", "Topic2"]
+difficulty: ["Beginner"|"Intermediate"|"Advanced"]
+draft: false
+---
+```
+
+2. Article Structure:
+- Start with H1 title matching the frontmatter title
+- Include a 1-2 paragraph introduction below the title
+- Use H2 (##) for main sections
+- Use H3 (###) for subsections
+- Include "What You'll Learn" section after introduction
+- Include "Prerequisites" section if applicable
+- End with "Summary" and "Related Articles" sections
+
+3. Content Formatting:
+- Use bullet points for lists
+- Use numbered lists for sequential steps/instructions
+- Include code blocks with proper syntax highlighting
+- Use tables for comparing data/concepts
+- Include relevant cross-links to other articles
+
+4. Technical Elements:
+- Format code examples in appropriate language blocks
+- Use tables for structured data comparison
+- Format links as [Title](mdc:path/to/article)
+- Keep headings in proper hierarchical order (H1 > H2 > H3)
+
+5. Educational Style:
+- Break complex concepts into digestible sections
+- Include practical examples where possible
+- Define technical terms when first used
+- Use consistent terminology throughout
+- Progress from basic to advanced concepts
+
+6. Cross-Referencing:
+- Link to related articles in the same difficulty level
+- Link to prerequisites when needed
+- Use relative paths for internal links
+- Include 2-3 related articles at the bottom

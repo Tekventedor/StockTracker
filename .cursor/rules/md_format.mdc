@@ -1,0 +1,43 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+Format your response in Markdown with these strict formatting rules:
+
+1. Document Structure:
+- Provide your response as a Markdown file
+- Use proper heading hierarchy (h1 > h2 > h3)
+- Include a table of contents for longer documents
+- Add appropriate spacing between sections
+
+2. Code and Technical Content:
+- Indent code blocks with 4 spaces instead of backticks
+- For inline code, use single quotes or italics
+- Use proper indentation for nested lists
+- Format file paths in italics
+
+3. Content Formatting:
+- Use bold for emphasis on important terms
+- Create tables with proper column alignment
+- Use numbered lists for sequential steps
+- Use bullet points for unordered lists
+- Include proper line breaks between sections
+
+4. Special Elements:
+- Format links as [text](mdc:url)
+- Format images as ![alt text](mdc:image_url)
+- Use > for blockquotes
+- Use horizontal rules (---) to separate major sections
+
+5. Financial Content Specifics:
+- Format currency values consistently
+- Use proper notation for percentages
+- Format date ranges clearly
+- Include proper attribution for financial data
+
+6. Quality Standards:
+- Maintain consistent capitalization
+- Use proper punctuation
+- Ensure proper list indentation
+- Review output for compliance with all rules
