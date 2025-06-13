@@ -16,4 +16,13 @@
   }
 }
 
+@layer components {
+  .active-filter {
+    @apply bg-blue-500 text-white;
+  }
+  .transition-discrete {
+    @apply transition-all duration-200 ease-in-out;
+  }
+}
+
 @config "./tailwind.config.js"; 

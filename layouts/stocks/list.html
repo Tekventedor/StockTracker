@@ -11,40 +11,76 @@
             <div class="tradingview-market-overview h-[600px]"></div>
         </div>
 
+        <!-- Filters -->
+        <div class="mb-8 space-y-4">
+            <!-- Risk Level Filter -->
+            <div>
+                <h3 class="text-lg font-semibold mb-2">Risk Level</h3>
+                <div class="flex flex-wrap gap-2">
+                    <button onclick="filterStocks('risk', 'all')" class="px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 transition-discrete">All</button>
+                    <button onclick="filterStocks('risk', 'low')" class="px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 transition-discrete">Low</button>
+                    <button onclick="filterStocks('risk', 'medium')" class="px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 transition-discrete">Medium</button>
+                    <button onclick="filterStocks('risk', 'high')" class="px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 transition-discrete">High</button>
+                </div>
+            </div>
+
+            <!-- Sector Filter -->
+            <div>
+                <h3 class="text-lg font-semibold mb-2">Sector</h3>
+                <div class="flex flex-wrap gap-2">
+                    <button onclick="filterStocks('sector', 'all')" class="px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 transition-discrete">All</button>
+                    <button onclick="filterStocks('sector', 'tech')" class="px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 transition-discrete">Technology</button>
+                    <button onclick="filterStocks('sector', 'finance')" class="px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 transition-discrete">Finance</button>
+                    <button onclick="filterStocks('sector', 'healthcare')" class="px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 transition-discrete">Healthcare</button>
+                </div>
+            </div>
+
+            <!-- Market Cap Filter -->
+            <div>
+                <h3 class="text-lg font-semibold mb-2">Market Cap</h3>
+                <div class="flex flex-wrap gap-2">
+                    <button onclick="filterStocks('cap', 'all')" class="px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 transition-discrete">All</button>
+                    <button onclick="filterStocks('cap', 'large')" class="px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 transition-discrete">Large Cap</button>
+                    <button onclick="filterStocks('cap', 'mid')" class="px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 transition-discrete">Mid Cap</button>
+                    <button onclick="filterStocks('cap', 'small')" class="px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 transition-discrete">Small Cap</button>
+                </div>
+            </div>
+        </div>
+
         <!-- Stock Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <!-- Apple -->
-            <div class="bg-white rounded-lg shadow-lg p-6">
+            <div class="stock-card bg-white rounded-lg shadow-lg p-6" data-risk="medium" data-sector="tech" data-cap="large">
                 <h3 class="text-xl font-semibold mb-4">Apple Inc. (AAPL)</h3>
                 <div class="tradingview-symbol-overview h-[400px]" data-symbol="NASDAQ:AAPL"></div>
             </div>
 
             <!-- Microsoft -->
-            <div class="bg-white rounded-lg shadow-lg p-6">
+            <div class="stock-card bg-white rounded-lg shadow-lg p-6" data-risk="low" data-sector="tech" data-cap="large">
                 <h3 class="text-xl font-semibold mb-4">Microsoft Corp. (MSFT)</h3>
                 <div class="tradingview-symbol-overview h-[400px]" data-symbol="NASDAQ:MSFT"></div>
             </div>
 
             <!-- Tesla -->
-            <div class="bg-white rounded-lg shadow-lg p-6">
+            <div class="stock-card bg-white rounded-lg shadow-lg p-6" data-risk="high" data-sector="tech" data-cap="large">
                 <h3 class="text-xl font-semibold mb-4">Tesla Inc. (TSLA)</h3>
                 <div class="tradingview-symbol-overview h-[400px]" data-symbol="NASDAQ:TSLA"></div>
             </div>
 
             <!-- JPMorgan Chase -->
-            <div class="bg-white rounded-lg shadow-lg p-6">
+            <div class="stock-card bg-white rounded-lg shadow-lg p-6" data-risk="low" data-sector="finance" data-cap="large">
                 <h3 class="text-xl font-semibold mb-4">JPMorgan Chase (JPM)</h3>
                 <div class="tradingview-symbol-overview h-[400px]" data-symbol="NYSE:JPM"></div>
             </div>
 
             <!-- Nvidia -->
-            <div class="bg-white rounded-lg shadow-lg p-6">
+            <div class="stock-card bg-white rounded-lg shadow-lg p-6" data-risk="high" data-sector="tech" data-cap="large">
                 <h3 class="text-xl font-semibold mb-4">Nvidia Corp. (NVDA)</h3>
                 <div class="tradingview-symbol-overview h-[400px]" data-symbol="NASDAQ:NVDA"></div>
             </div>
 
             <!-- Johnson & Johnson -->
-            <div class="bg-white rounded-lg shadow-lg p-6">
+            <div class="stock-card bg-white rounded-lg shadow-lg p-6" data-risk="low" data-sector="healthcare" data-cap="large">
                 <h3 class="text-xl font-semibold mb-4">Johnson & Johnson (JNJ)</h3>
                 <div class="tradingview-symbol-overview h-[400px]" data-symbol="NYSE:JNJ"></div>
             </div>

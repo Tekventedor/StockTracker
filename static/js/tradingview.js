@@ -24,16 +24,36 @@ document.addEventListener('DOMContentLoaded', () => {
         createTradingViewWidget(container, 'market_overview', {
             width: '100%',
             height: '100%',
-            symbol: 'NASDAQ:AAPL',
-            interval: 'D',
-            timezone: 'Etc/UTC',
-            theme: 'light',
-            style: '1',
-            locale: 'en',
-            toolbar_bg: '#f1f3f6',
-            enable_publishing: false,
-            allow_symbol_change: true,
-            container_id: container.id
+            symbolsGroups: [
+                {
+                    name: "Indices",
+                    symbols: [
+                        { name: "FOREXCOM:SPXUSD" },
+                        { name: "FOREXCOM:NSXUSD" },
+                        { name: "FOREXCOM:DJI" }
+                    ]
+                },
+                {
+                    name: "Commodities",
+                    symbols: [
+                        { name: "CME_MINI:ES1!" },
+                        { name: "CME:6E1!" },
+                        { name: "COMEX:GC1!" }
+                    ]
+                },
+                {
+                    name: "Bonds",
+                    symbols: [
+                        { name: "CME:GE1!" },
+                        { name: "CBOT:ZB1!" },
+                        { name: "CBOT:UB1!" }
+                    ]
+                }
+            ],
+            showSymbolLogo: true,
+            colorTheme: "light",
+            isTransparent: false,
+            locale: "en"
         });
     });
 
@@ -53,7 +73,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 toolbar_bg: '#f1f3f6',
                 enable_publishing: false,
                 allow_symbol_change: true,
-                container_id: container.id
+                container_id: container.id,
+                studies: [
+                    "RSI@tv-basicstudies",
+                    "MASimple@tv-basicstudies"
+                ],
+                show_popup_button: true,
+                popup_width: "1000",
+                popup_height: "650"
             });
         }
     });
@@ -63,16 +90,36 @@ document.addEventListener('DOMContentLoaded', () => {
         createTradingViewWidget(container, 'market_quotes', {
             width: '100%',
             height: '100%',
-            symbol: 'NASDAQ:AAPL',
-            interval: 'D',
-            timezone: 'Etc/UTC',
-            theme: 'light',
-            style: '1',
-            locale: 'en',
-            toolbar_bg: '#f1f3f6',
-            enable_publishing: false,
-            allow_symbol_change: true,
-            container_id: container.id
+            symbolsGroups: [
+                {
+                    name: "Indices",
+                    symbols: [
+                        { name: "FOREXCOM:SPXUSD" },
+                        { name: "FOREXCOM:NSXUSD" },
+                        { name: "FOREXCOM:DJI" }
+                    ]
+                },
+                {
+                    name: "Commodities",
+                    symbols: [
+                        { name: "CME_MINI:ES1!" },
+                        { name: "CME:6E1!" },
+                        { name: "COMEX:GC1!" }
+                    ]
+                },
+                {
+                    name: "Bonds",
+                    symbols: [
+                        { name: "CME:GE1!" },
+                        { name: "CBOT:ZB1!" },
+                        { name: "CBOT:UB1!" }
+                    ]
+                }
+            ],
+            showSymbolLogo: true,
+            colorTheme: "light",
+            isTransparent: false,
+            locale: "en"
         });
     });
 
@@ -81,16 +128,13 @@ document.addEventListener('DOMContentLoaded', () => {
         createTradingViewWidget(container, 'screener', {
             width: '100%',
             height: '100%',
-            symbol: 'NASDAQ:AAPL',
-            interval: 'D',
-            timezone: 'Etc/UTC',
-            theme: 'light',
-            style: '1',
-            locale: 'en',
-            toolbar_bg: '#f1f3f6',
-            enable_publishing: false,
-            allow_symbol_change: true,
-            container_id: container.id
+            defaultColumn: "overview",
+            defaultScreen: "general",
+            market: "stock",
+            showToolbar: true,
+            colorTheme: "light",
+            locale: "en",
+            isTransparent: false
         });
     });
 
@@ -99,16 +143,10 @@ document.addEventListener('DOMContentLoaded', () => {
         createTradingViewWidget(container, 'events', {
             width: '100%',
             height: '100%',
-            symbol: 'NASDAQ:AAPL',
-            interval: 'D',
-            timezone: 'Etc/UTC',
-            theme: 'light',
-            style: '1',
-            locale: 'en',
-            toolbar_bg: '#f1f3f6',
-            enable_publishing: false,
-            allow_symbol_change: true,
-            container_id: container.id
+            colorTheme: "light",
+            isTransparent: false,
+            locale: "en",
+            importanceFilter: "-1,0,1"
         });
     });
 }); 
