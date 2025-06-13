@@ -4,9 +4,7 @@ module.exports = {
     "./layouts/**/*.html",
     "./content/**/*.{html,md}",
     "./themes/**/layouts/**/*.html",
-    "./assets/css/**/*.css",
-    "./old_version/Stocks/layouts/**/*.html",
-    "./old_version/Stocks/content/**/*.{html,md}"
+    "./assets/css/**/*.css"
   ],
   theme: {
     extend: {},
@@ -14,9 +12,7 @@ module.exports = {
   plugins: [
     require('@tailwindcss/typography'),
   ],
-  prefix: {
-    'old-': 'old-', // Prefix for old version classes
-  },
+  prefix: 'old-',
   safelist: [
     // Add any classes that might be dynamically generated
     'old-bg-blue-500',
