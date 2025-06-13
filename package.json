@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Stock market tracking and learning platform",
   "scripts": {
+    "postinstall": "npm install -g tailwindcss",
     "build": "hugo --gc --minify",
     "build:css": "tailwindcss -i ./assets/css/learn.css -o ./static/css/learn.css"
   },
@@ -11,5 +12,8 @@
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.4",
     "tailwindcss": "^4.1.8"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }

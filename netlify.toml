@@ -1,5 +1,5 @@
 [build]
-  command = "npm install && npm run build:css && hugo --gc --minify"
+  command = "which npm && which node && npm install && npm run build:css && which hugo && hugo --gc --minify"
   publish = "public"
 
 [build.environment]
@@ -7,6 +7,7 @@
   HUGO_ENV = "production"
   HUGO_ENABLEGITINFO = "true"
   NODE_VERSION = "18"
+  PATH = "/opt/buildhome/.nvm/versions/node/v18.17.0/bin:/opt/buildhome/.local/bin:/opt/buildhome/bin:/opt/buildhome/.local/bin:/opt/buildhome/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 [[redirects]]
   from = "/*"
