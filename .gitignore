@@ -1,2 +1,11 @@
-/public
+# Hugo default output directory
+/public/
+/resources/
+
+# Temporary files
+.hugo_build.lock
+
+# Old version directory
+old_version/
+
 /node_modules
