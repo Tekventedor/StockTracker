@@ -76,8 +76,8 @@ The stock market is a place where shares of publicly traded companies are bought
 
 ### Buying Stocks
 
-```json
-// Example order process
+**Example order process:**
+{{< highlight json >}}
 {
     "orderType": "Market Order",
     "symbol": "AAPL",
@@ -86,7 +86,7 @@ The stock market is a place where shares of publicly traded companies are bought
     "estimatedCost": "$1,750.00",
     "pricePerShare": "$175.00"
 }
-```
+{{< /highlight >}}
 
 ### Market Hours
 

@@ -1,0 +1,25 @@
+{{ $symbol := .Get "symbol" }}
+{{ $width := .Get "width" | default "100%" }}
+{{ $height := .Get "height" | default "100%" }}
+{{ $locale := .Get "locale" | default "en" }}
+{{ $dateRange := .Get "dateRange" | default "12M" }}
+{{ $colorTheme := .Get "colorTheme" | default "light" }}
+{{ $isTransparent := .Get "isTransparent" | default true }}
+{{ $autosize := .Get "autosize" | default true }}
+
+<div class="tradingview-widget-container" style="height: {{ $height }};">
+    <div class="tradingview-widget-container__widget" style="height: {{ $height }};"></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+    {
+        "symbol": "{{ $symbol }}",
+        "width": "{{ $width }}",
+        "height": "{{ $height }}",
+        "locale": "{{ $locale }}",
+        "dateRange": "{{ $dateRange }}",
+        "colorTheme": "{{ $colorTheme }}",
+        "isTransparent": {{ $isTransparent }},
+        "autosize": {{ $autosize }},
+        "largeChartUrl": ""
+    }
+    </script>
+</div> 
