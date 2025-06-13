@@ -4,9 +4,24 @@
 
 @layer base {
   :root {
+    --color-primary: theme('colors.indigo.600');
+    --color-primary-dark: theme('colors.indigo.700');
+    --color-primary-light: theme('colors.indigo.500');
     --color-prose-headings: #111827;
     --color-prose-body: #374151;
     --color-prose-links: #2563eb;
+  }
+
+  body {
+    @apply bg-gray-50 text-gray-900;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold text-gray-900;
+  }
+
+  a {
+    @apply text-indigo-600 hover:text-indigo-800;
   }
 
   .dark {
@@ -22,5 +37,31 @@
   }
   .transition-discrete {
     @apply transition-all duration-200 ease-in-out;
+  }
+
+  .btn {
+    @apply px-4 py-2 rounded-lg font-medium transition-colors;
+  }
+
+  .btn-primary {
+    @apply bg-indigo-600 text-white hover:bg-indigo-700;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-200 text-gray-800 hover:bg-gray-300;
+  }
+
+  .card {
+    @apply bg-white rounded-lg shadow-md p-6;
+  }
+
+  .input {
+    @apply px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-indigo-800;
   }
 }

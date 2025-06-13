@@ -4,21 +4,41 @@
   font-size: 1rem;
   line-height: 1.5;
   color: #374151;
+  --color-primary: theme('colors.indigo.600');
+  --color-primary-dark: theme('colors.indigo.700');
+  --color-primary-light: theme('colors.indigo.500');
 }
 
-.old-version h1, .old-version h2, .old-version h3, .old-version h4 {
-  color: #111827;
-  font-weight: 600;
+.old-version h1, .old-version h2, .old-version h3, .old-version h4, .old-version h5, .old-version h6 {
+  @apply font-bold text-gray-900;
 }
 
 .old-version a {
-  color: #2563eb;
-  text-decoration: none;
-  transition: color 0.2s ease;
+  @apply text-indigo-600 hover:text-indigo-800;
 }
 
-.old-version a:hover {
-  color: #1d4ed8;
+.old-version .btn {
+  @apply px-4 py-2 rounded-lg font-medium transition-colors;
+}
+
+.old-version .btn-primary {
+  @apply bg-indigo-600 text-white hover:bg-indigo-700;
+}
+
+.old-version .btn-secondary {
+  @apply bg-gray-200 text-gray-800 hover:bg-gray-300;
+}
+
+.old-version .card {
+  @apply bg-white rounded-lg shadow-md p-6;
+}
+
+.old-version .input {
+  @apply px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent;
+}
+
+.old-version .text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-indigo-800;
 }
 
 .old-active-filter {
@@ -38,15 +58,6 @@
 }
 
 /* Card styles */
-.old-version .card {
-  background-color: white;
-  border-radius: 0.75rem;
-  border: 1px solid #e5e7eb;
-  padding: 1.5rem;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-}
-
 .old-version .card:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -71,23 +82,37 @@
 @media (prefers-color-scheme: dark) {
   .old-version {
     color: #d1d5db;
+    --color-primary: theme('colors.indigo.400');
+    --color-primary-dark: theme('colors.indigo.500');
+    --color-primary-light: theme('colors.indigo.300');
   }
 
-  .old-version h1, .old-version h2, .old-version h3, .old-version h4 {
-    color: #f3f4f6;
-  }
-
-  .old-version .card {
-    background-color: #1f2937;
-    border-color: #374151;
+  .old-version h1, .old-version h2, .old-version h3, .old-version h4, .old-version h5, .old-version h6 {
+    @apply text-gray-100;
   }
 
   .old-version a {
-    color: #60a5fa;
+    @apply text-indigo-400 hover:text-indigo-300;
   }
 
-  .old-version a:hover {
-    color: #93c5fd;
+  .old-version .btn-primary {
+    @apply bg-indigo-500 text-white hover:bg-indigo-600;
+  }
+
+  .old-version .btn-secondary {
+    @apply bg-gray-700 text-gray-100 hover:bg-gray-600;
+  }
+
+  .old-version .card {
+    @apply bg-gray-800;
+  }
+
+  .old-version .input {
+    @apply bg-gray-700 border-gray-600 text-gray-100;
+  }
+
+  .old-version .text-gradient {
+    @apply from-indigo-400 to-indigo-600;
   }
 }
 
