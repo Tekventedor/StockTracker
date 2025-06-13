@@ -4,7 +4,7 @@
   "description": "Stock market tracking and learning platform",
   "scripts": {
     "build": "hugo --gc --minify",
-    "build:css": "tailwindcss -i ./assets/css/learn.css -o ./static/css/learn.css"
+    "build:css": "tailwindcss -i ./assets/css/main.css -o ./assets/css/main.min.css && tailwindcss -i ./assets/css/old-styles.css -o ./assets/css/old-styles.min.css"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.16",
