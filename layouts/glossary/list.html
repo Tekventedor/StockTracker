@@ -1,16 +1,16 @@
 {{ define "main" }}
-<div class="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
-    <h1 class="text-4xl font-bold text-gray-900 mb-8">Stock Market Glossary</h1>
+<div class="old-version max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+    <h1 class="old-text-4xl old-font-bold old-text-gray-900 old-mb-8">Stock Market Glossary</h1>
     
-    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+    <div class="old-grid old-gap-6 md:old-grid-cols-2 lg:old-grid-cols-3">
         {{ range .Pages.ByTitle }}
-        <a href="{{ .RelPermalink }}" class="block p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-            <h2 class="text-xl font-semibold text-gray-900 mb-2">{{ .Title }}</h2>
-            <p class="text-gray-600 mb-4">{{ .Description }}</p>
+        <a href="{{ .RelPermalink }}" class="old-block old-p-6 old-bg-white old-rounded-lg old-shadow-lg old-hover:shadow-xl old-transition-shadow">
+            <h2 class="old-text-xl old-font-semibold old-text-gray-900 old-mb-2">{{ .Title }}</h2>
+            <p class="old-text-gray-600 old-mb-4">{{ .Description }}</p>
             
-            <div class="flex flex-wrap gap-2">
+            <div class="old-flex old-flex-wrap old-gap-2">
                 {{ range .Params.topics }}
-                <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                <span class="old-inline-flex old-items-center old-px-2 old-py-1 old-rounded-full old-text-xs old-font-medium old-bg-blue-100 old-text-blue-800">
                     {{ . }}
                 </span>
                 {{ end }}

@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-prose-headings: #111827;
+    --color-prose-body: #374151;
+    --color-prose-links: #2563eb;
+  }
+
+  .dark {
+    --color-prose-headings: #f3f4f6;
+    --color-prose-body: #d1d5db;
+    --color-prose-links: #60a5fa;
+  }
+}
+
+@layer components {
+  .old-active-filter {
+    @apply old-bg-blue-500 old-text-white;
+  }
+  .old-transition-discrete {
+    @apply old-transition-all old-duration-200 old-ease-in-out;
+  }
+}
+
+/* Add any old version specific styles here */
+.old-version {
+  /* This class can be added to elements that should use the old version's styles */
+  @apply old-font-sans old-text-base old-leading-normal;
+} 
