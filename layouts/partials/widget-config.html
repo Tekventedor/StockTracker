@@ -3,9 +3,9 @@
         "tabs" (slice (dict
             "title" "Indices"
             "symbols" (slice
-                (dict "s" "FOREXCOM:SPXUSD" "d" "S&P 500")
-                (dict "s" "FOREXCOM:NSXUSD" "d" "Nasdaq 100")
-                (dict "s" "FOREXCOM:DJI" "d" "Dow 30")
+                (dict "s" "FOREXCOM_SPXUSD" "d" "S&P 500")
+                (dict "s" "FOREXCOM_NSXUSD" "d" "Nasdaq 100")
+                (dict "s" "FOREXCOM_DJI" "d" "Dow 30")
             )
         ))
         "colorTheme" "light"
@@ -28,9 +28,9 @@
             "name" "Indices"
             "originalName" "Indices"
             "symbols" (slice
-                (dict "name" "FOREXCOM:SPXUSD" "displayName" "S&P 500")
-                (dict "name" "FOREXCOM:NSXUSD" "displayName" "Nasdaq 100")
-                (dict "name" "FOREXCOM:DJI" "displayName" "Dow 30")
+                (dict "name" "FOREXCOM_SPXUSD" "displayName" "S&P 500")
+                (dict "name" "FOREXCOM_NSXUSD" "displayName" "Nasdaq 100")
+                (dict "name" "FOREXCOM_DJI" "displayName" "Dow 30")
             )
         ))
         "showSymbolLogo" true
@@ -45,4 +45,30 @@
         marketOverview: {{ $config.marketOverview | jsonify | safeJS }},
         marketQuotes: {{ $config.marketQuotes | jsonify | safeJS }}
     };
+
+    // Convert underscores back to colons for TradingView
+    function fixSymbols(config) {
+        if (config.symbols) {
+            config.symbols.forEach(symbol => {
+                if (symbol.s) symbol.s = symbol.s.replace(/_/g, ':');
+                if (symbol.name) symbol.name = symbol.name.replace(/_/g, ':');
+            });
+        }
+        if (config.symbolsGroups) {
+            config.symbolsGroups.forEach(group => {
+                if (group.symbols) {
+                    group.symbols.forEach(symbol => {
+                        if (symbol.name) symbol.name = symbol.name.replace(/_/g, ':');
+                    });
+                }
+            });
+        }
+    }
+
+    // Fix symbols in both configs
+    fixSymbols(window.widgetConfigs.marketOverview);
+    if (window.widgetConfigs.marketOverview.tabs) {
+        window.widgetConfigs.marketOverview.tabs.forEach(tab => fixSymbols(tab));
+    }
+    fixSymbols(window.widgetConfigs.marketQuotes);
 </script> 
