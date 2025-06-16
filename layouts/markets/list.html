@@ -13,7 +13,6 @@
             <div class="tradingview-widget-container h-[600px]">
                 <div class="tradingview-widget-container__widget h-full"></div>
                 <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async></script>
-                <script type="text/javascript" src="/js/widgets.js"></script>
             </div>
         </div>
 
@@ -22,10 +21,12 @@
             <div class="tradingview-widget-container h-[400px]">
                 <div class="tradingview-widget-container__widget h-full"></div>
                 <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async></script>
-                <script type="text/javascript" src="/js/widgets.js"></script>
             </div>
         </div>
     </div>
+
+    <!-- Initialize Widgets -->
+    {{ partial "tradingview-widgets.html" . }}
 
     <!-- Market Details Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">

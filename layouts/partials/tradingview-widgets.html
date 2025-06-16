@@ -1,0 +1,8 @@
+{{ $widgets := site.Data.widgets }}
+<script type="text/javascript">
+    // Market Overview Widget
+    window.TradingViewWidget = {{ $widgets.marketOverview | jsonify }};
+
+    // Market Quotes Widget
+    window.MarketQuotesWidget = {{ $widgets.marketQuotes | jsonify }};
+</script> 
