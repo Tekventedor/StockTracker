@@ -8,12 +8,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Initialize Market Quotes widget
-    const marketQuotesContainer = document.querySelector('.market-quotes-widget');
-    if (marketQuotesContainer && window.widgetConfigs) {
-        new TradingView.widget({
-            ...window.widgetConfigs.marketQuotes,
-            container_id: marketQuotesContainer.id
-        });
-    }
+    // Initialize stock widgets
+    document.querySelectorAll('.tradingview-widget-container').forEach(container => {
+        if (container.dataset.widgetConfig) {
+            const config = JSON.parse(container.dataset.widgetConfig);
+            new TradingView.widget({
+                ...config,
+                container_id: container.id || `widget-${Math.random().toString(36).substr(2, 9)}`
+            });
+        }
+    });
 }); 
