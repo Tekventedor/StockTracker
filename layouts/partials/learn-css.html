@@ -1,13 +1,11 @@
-{{ with (templates.Defer (dict "key" "learn")) }}
-  {{ with resources.Get "css/learn.css" }}
-    {{ $opts := dict "minify" (not hugo.IsDevelopment) }}
-    {{ with . | css.TailwindCSS $opts }}
-      {{ if hugo.IsDevelopment }}
-        <link rel="stylesheet" href="{{ .RelPermalink }}">
-      {{ else }}
-        {{ with . | fingerprint }}
-          <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
-        {{ end }}
+{{ with resources.Get "css/learn.css" }}
+  {{ $opts := dict "minify" (not hugo.IsDevelopment) }}
+  {{ with . | css.TailwindCSS $opts }}
+    {{ if hugo.IsDevelopment }}
+      <link rel="stylesheet" href="{{ .RelPermalink }}">
+    {{ else }}
+      {{ with . | fingerprint }}
+        <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
       {{ end }}
     {{ end }}
   {{ end }}
@@ -85,16 +83,7 @@
     /* Nested list styling */
     .prose li > ul,
     .prose li > ol {
-        margin: 0.5em 0 0.5em 0;
-        padding-left: 2em;
-    }
-
-    .prose li > ul {
-        list-style-type: circle;
-    }
-
-    .prose li > ul > li > ul {
-        list-style-type: square;
+        margin: 0.5em 0;
     }
 
     /* Remove custom bullets and ensure proper text wrapping */
