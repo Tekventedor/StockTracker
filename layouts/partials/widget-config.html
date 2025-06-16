@@ -1,0 +1,48 @@
+{{ $config := dict
+    "marketOverview" (dict
+        "tabs" (slice (dict
+            "title" "Indices"
+            "symbols" (slice
+                (dict "s" "FOREXCOM:SPXUSD" "d" "S&P 500")
+                (dict "s" "FOREXCOM:NSXUSD" "d" "Nasdaq 100")
+                (dict "s" "FOREXCOM:DJI" "d" "Dow 30")
+            )
+        ))
+        "colorTheme" "light"
+        "dateRange" "12M"
+        "showChart" true
+        "largeChartUrl" ""
+        "isTransparent" false
+        "showSymbolLogo" true
+        "showFloatingTooltip" false
+        "width" "100%"
+        "height" "100%"
+        "plotLineColorFilling" "rgba(41, 98, 255, 0.1)"
+        "plotLineColor" "rgba(41, 98, 255, 1)"
+        "locale" "en"
+    )
+    "marketQuotes" (dict
+        "width" "100%"
+        "height" "100%"
+        "symbolsGroups" (slice (dict
+            "name" "Indices"
+            "originalName" "Indices"
+            "symbols" (slice
+                (dict "name" "FOREXCOM:SPXUSD" "displayName" "S&P 500")
+                (dict "name" "FOREXCOM:NSXUSD" "displayName" "Nasdaq 100")
+                (dict "name" "FOREXCOM:DJI" "displayName" "Dow 30")
+            )
+        ))
+        "showSymbolLogo" true
+        "colorTheme" "light"
+        "isTransparent" false
+        "locale" "en"
+    )
+}}
+
+<script type="text/javascript">
+    window.widgetConfigs = {
+        marketOverview: {{ $config.marketOverview | jsonify | safeJS }},
+        marketQuotes: {{ $config.marketQuotes | jsonify | safeJS }}
+    };
+</script> 
