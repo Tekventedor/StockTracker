@@ -1,13 +1,13 @@
-{{ $type := .Get "type" | default "market-overview" }}
-{{ $height := .Get "height" | default "400" }}
-{{ $width := .Get "width" | default "100%" }}
+{{ $type := .type | default "market-overview" }}
+{{ $height := .height | default "400" }}
+{{ $width := .width | default "100%" }}
 
 {{ if eq $type "market-overview" }}
-<div class="tradingview-widget-container market-overview-widget" id="market-overview-{{ .Ordinal }}" style="height: {{ $height }}px; width: {{ $width }};">
+<div class="tradingview-widget-container market-overview-widget" id="market-overview-{{ now.Unix }}" style="height: {{ $height }}px; width: {{ $width }};">
     <div class="tradingview-widget-container__widget" style="height: 100%;"></div>
 </div>
 {{ else if eq $type "market-quotes" }}
-<div class="tradingview-widget-container market-quotes-widget" id="market-quotes-{{ .Ordinal }}" style="height: {{ $height }}px; width: {{ $width }};">
+<div class="tradingview-widget-container market-quotes-widget" id="market-quotes-{{ now.Unix }}" style="height: {{ $height }}px; width: {{ $width }};">
     <div class="tradingview-widget-container__widget" style="height: 100%;"></div>
 </div>
 {{ end }}
