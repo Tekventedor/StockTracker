@@ -1,20 +1,18 @@
 {{ $type := .Get "type" }}
 {{ $height := .Get "height" | default "400" }}
 {{ $width := .Get "width" | default "100%" }}
-{{ $widgets := site.Data.widgets }}
 
 {{ if eq $type "market-overview" }}
-<div class="tradingview-widget-container" style="height: {{ $height }}px; width: {{ $width }};">
+<div class="tradingview-widget-container market-overview-widget" id="market-overview-{{ .Ordinal }}" style="height: {{ $height }}px; width: {{ $width }};">
     <div class="tradingview-widget-container__widget" style="height: 100%;"></div>
-    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
-    {{ $widgets.marketOverview | jsonify | safeJS }}
-    </script>
 </div>
 {{ else if eq $type "market-quotes" }}
-<div class="tradingview-widget-container" style="height: {{ $height }}px; width: {{ $width }};">
+<div class="tradingview-widget-container market-quotes-widget" id="market-quotes-{{ .Ordinal }}" style="height: {{ $height }}px; width: {{ $width }};">
     <div class="tradingview-widget-container__widget" style="height: 100%;"></div>
-    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async>
-    {{ $widgets.marketQuotes | jsonify | safeJS }}
-    </script>
 </div>
-{{ end }} 
+{{ end }}
+
+<!-- Load TradingView widget script -->
+<script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+<!-- Load widget configuration -->
+<script type="text/javascript" src="/js/widget-config.js"></script> 
