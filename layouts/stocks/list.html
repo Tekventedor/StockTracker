@@ -3,6 +3,15 @@
     <h1 class="text-3xl font-bold text-gray-900 mb-8">{{ .Title }}</h1>
     {{ .Content }}
 
+    <!-- Market Overview Widget -->
+    <div class="mt-8 mb-8">
+        <div class="bg-white rounded-lg shadow-sm p-4 h-[400px]">
+            <div class="tradingview-widget-container market-overview-widget h-full">
+                <div class="tradingview-widget-container__widget h-full"></div>
+            </div>
+        </div>
+    </div>
+
     <!-- Stock Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <!-- Apple -->
@@ -34,7 +43,7 @@
             <div class="flex flex-wrap gap-2">
                 <span class="px-2 py-1 text-xs font-medium bg-blue-100 text-blue-800 rounded-full">Technology</span>
                 <span class="px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">Mega Cap</span>
-                    <span class="px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">Low Risk</span>
+                <span class="px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">Low Risk</span>
             </div>
         </div>
 
@@ -311,6 +320,15 @@
         </div>
     </div>
 </div>
+
+<!-- Load TradingView widget script -->
+<script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+
+<!-- Load widget configuration -->
+<script type="text/javascript" src="/js/widget-config.js"></script>
+
+<!-- Initialize widgets -->
+<script type="text/javascript" src="/js/widgets.js"></script>
 
 <script>
 // Keep track of active filters
