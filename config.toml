@@ -8,13 +8,9 @@
     url = "/learn/"
     weight = 2
   [[menu.main]]
-    name = "Glossary"
-    url = "/glossary/"
-    weight = 3
-  [[menu.main]]
     name = "Markets"
     url = "/markets/"
-    weight = 4 
+    weight = 3 
 
 [taxonomies]
   difficulty = "difficulty"

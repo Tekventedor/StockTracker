@@ -254,7 +254,6 @@
             if (query.length < 2) {
                 if (searchResults) searchResults.classList.add('hidden');
                 if (searchHistory) searchHistory.classList.remove('hidden');
-                updateSearchHistoryUI();
                 return;
             }
 
@@ -268,16 +267,22 @@
                     keywords: ['learn', 'education', 'articles']
                 },
                 {
+                    title: 'Sectors',
+                    url: '/sectors/',
+                    type: 'Section',
+                    keywords: ['sector', 'sectors', 'industries']
+                },
+                {
                     title: 'Stocks',
                     url: '/stocks/',
                     type: 'Section',
                     keywords: ['stock', 'stocks', 'companies', 'equities']
                 },
                 {
-                    title: 'Sectors',
-                    url: '/sectors/',
+                    title: 'Glossary',
+                    url: '/glossary/',
                     type: 'Section',
-                    keywords: ['sector', 'sectors', 'industries']
+                    keywords: ['glossary', 'terms', 'definitions']
                 },
                 { 
                     title: 'Stock Market Basics', 
@@ -354,7 +359,6 @@
         });
     });
 
-    // Close dropdowns when clicking outside
     document.addEventListener('click', function(e) {
         var isSearchContainer = e.target.closest('.search-container');
         var isSearchHistory = e.target.closest('.search-history');

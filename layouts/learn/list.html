@@ -1,53 +1,101 @@
 {{ define "main" }}
-<div class="container mx-auto px-4 py-8">
-    <h1 class="text-4xl font-bold mb-8">Learn Stock Trading</h1>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="mt-8 mb-8">
+        <h1 class="text-3xl font-bold text-gray-900 mt-8 mb-8">Learn Stock Trading</h1>
+    </div>
 
-    <!-- Browse by Difficulty -->
-    <section class="mb-12">
-        <h2 class="text-2xl font-semibold mb-6">Browse by Difficulty</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <!-- Beginner -->
-            <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
-                <h3 class="text-xl font-semibold mb-4">Beginner</h3>
-                <p class="text-gray-600 mb-4">Start your trading journey with the basics</p>
-                <a href="/learn/#beginner" class="text-indigo-600 hover:text-indigo-800 font-medium">View Articles →</a>
+    <!-- Difficulty Categories -->
+    <div class="mt-16 mb-12">
+        <h2 class="text-2xl font-semibold text-gray-900 mb-4">Browse by Difficulty</h2>
+        <div class="grid gap-6 md:grid-cols-3">
+            <div id="beginner" onclick="filterByDifficulty('Beginner')" class="cursor-pointer p-6 bg-green-50 rounded-lg shadow hover:shadow-lg transition-shadow text-center">
+                <h3 class="text-xl font-semibold text-green-800 mb-2">Beginner</h3>
+                <p class="text-green-600 mb-4">Start your trading journey here</p>
             </div>
-
-            <!-- Intermediate -->
-            <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
-                <h3 class="text-xl font-semibold mb-4">Intermediate</h3>
-                <p class="text-gray-600 mb-4">Take your trading to the next level</p>
-                <a href="/learn/#intermediate" class="text-indigo-600 hover:text-indigo-800 font-medium">View Articles →</a>
+            <div id="intermediate" onclick="filterByDifficulty('Intermediate')" class="cursor-pointer p-6 bg-indigo-50 rounded-lg shadow hover:shadow-lg transition-shadow text-center">
+                <h3 class="text-xl font-semibold text-indigo-800 mb-2">Intermediate</h3>
+                <p class="text-indigo-600 mb-4">Advance your knowledge</p>
             </div>
-
-            <!-- Advanced -->
-            <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
-                <h3 class="text-xl font-semibold mb-4">Advanced</h3>
-                <p class="text-gray-600 mb-4">Master complex trading strategies</p>
-                <a href="/learn/#advanced" class="text-indigo-600 hover:text-indigo-800 font-medium">View Articles →</a>
+            <div id="advanced" onclick="filterByDifficulty('Advanced')" class="cursor-pointer p-6 bg-purple-50 rounded-lg shadow hover:shadow-lg transition-shadow text-center">
+                <h3 class="text-xl font-semibold text-purple-800 mb-2">Advanced</h3>
+                <p class="text-purple-600 mb-4">Master complex concepts</p>
             </div>
         </div>
-    </section>
+    </div>
 
     <!-- Latest Articles -->
-    <section>
-        <h2 class="text-2xl font-semibold mb-6">Latest Articles</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="mb-12">
+        <div class="flex items-center gap-2 mb-6">
+            <h2 class="text-2xl font-semibold text-gray-900">Latest Articles</h2>
+            <button onclick="filterByDifficulty('all')" class="text-base text-indigo-600 hover:text-indigo-800">
+                (Show All)
+            </button>
+        </div>
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {{ range .Pages }}
-            <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-                <div class="p-6">
-                    <h3 class="text-xl font-semibold mb-2">
-                        <a href="{{ .RelPermalink }}" class="text-gray-900 hover:text-indigo-600">{{ .Title }}</a>
-                    </h3>
-                    <p class="text-gray-600 mb-4">{{ .Description }}</p>
-                    <div class="flex items-center justify-between">
-                        <span class="text-sm text-gray-500">{{ .Date.Format "January 2, 2006" }}</span>
-                        <a href="{{ .RelPermalink }}" class="text-indigo-600 hover:text-indigo-800 font-medium">Read More →</a>
+            <a href="{{ .RelPermalink }}" class="article-card group block bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow" data-difficulty="{{ range .Params.difficulty }}{{ . }}{{ end }}">
+                <article class="p-6">
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        {{ range .Params.difficulty }}
+                        <span class="difficulty-badge {{ if eq . "Beginner" }}beginner{{ else if eq . "Intermediate" }}intermediate{{ else }}advanced{{ end }}">
+                            {{ . }}
+                        </span>
+                        {{ end }}
                     </div>
-                </div>
-            </article>
+
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2 group-hover:text-indigo-600 transition-colors">{{ .Title }}</h3>
+                    <p class="text-gray-600 mb-4">{{ .Description }}</p>
+
+                    <!-- Tags -->
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        {{ range .Params.topics }}
+                        <span class="topic-tag">
+                            {{ . }}
+                        </span>
+                        {{ end }}
+                    </div>
+
+                    <!-- Read More -->
+                    <div class="flex justify-end">
+                        <span class="read-more">
+                            Read More
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </span>
+                    </div>
+                </article>
+            </a>
             {{ end }}
         </div>
-    </section>
+    </div>
 </div>
+
+<script>
+function filterByDifficulty(difficulty) {
+    // Remove active class from all difficulty boxes
+    document.querySelectorAll('#beginner, #intermediate, #advanced').forEach(box => {
+        box.classList.remove('ring-2', 'ring-offset-2');
+    });
+    
+    // Add active class to selected difficulty box
+    if (difficulty !== 'all') {
+        document.getElementById(difficulty.toLowerCase()).classList.add('ring-2', 'ring-offset-2');
+    }
+    
+    // Show/hide articles based on difficulty
+    document.querySelectorAll('.article-card').forEach(card => {
+        if (difficulty === 'all' || card.dataset.difficulty === difficulty) {
+            card.style.display = 'block';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
+
+// Initialize with all articles shown
+document.addEventListener('DOMContentLoaded', () => {
+    filterByDifficulty('all');
+});
+</script>
 {{ end }} 

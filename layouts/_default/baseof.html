@@ -1,20 +1,16 @@
 <!DOCTYPE html>
-<html lang="{{ .Site.LanguageCode | default "en" }}">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
-    <link rel="stylesheet" href="{{ "css/main.min.css" | relURL }}">
-    <link rel="stylesheet" href="{{ "css/old-styles.min.css" | relURL }}">
-    <script src="{{ "js/tradingview.js" | relURL }}" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-    {{ block "head" . }}{{ end }}
+    <title>{{ if .Title }}{{ .Title }} - {{ end }}{{ .Site.Title }}</title>
+    {{ partial "css.html" . }}
+    {{ partial "common-styles.html" . }}
 </head>
-<body class="bg-gray-50 dark:bg-gray-900">
-    {{ partial "header.html" . }}
-    <main class="container mx-auto px-4 py-8">
+<body class="page-gradient min-h-screen">
+    {{ partial "nav.html" . }}
+    <main class="min-h-[calc(100vh-4rem)]">
         {{ block "main" . }}{{ end }}
     </main>
-    {{ partial "footer.html" . }}
 </body>
 </html> 

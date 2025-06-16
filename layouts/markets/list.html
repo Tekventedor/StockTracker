@@ -248,79 +248,89 @@ document.addEventListener('DOMContentLoaded', function() {
         newWidgetContainer.id = 'marketStatsWidgetContainer';
         newWidgetContainer.className = 'tradingview-widget-container w-full';
         newWidgetContainer.innerHTML = '<div class="tradingview-widget-container__widget h-[500px]"></div>';
+
+        // Clear existing widget and append the new one
         marketStatsWidgetContainerParent.innerHTML = '';
         marketStatsWidgetContainerParent.appendChild(newWidgetContainer);
 
-        // Create and append the script element
         const script = document.createElement('script');
         script.type = 'text/javascript';
         script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js';
         script.async = true;
-        script.innerHTML = JSON.stringify({
-            "interval": "1D",
+        
+        const widgetConfig = {
+            "interval": "1M",
             "width": "100%",
-            "isTransparent": false,
-            "height": 500,
+            "is24Hr": false,
+            "height": "100%",
             "symbol": symbol,
             "showIntervalTabs": true,
+            "displayMode": "adaptive",
             "locale": "en",
             "colorTheme": "light"
-        });
-        newWidgetContainer.appendChild(script);
+        };
+
+        script.innerHTML = JSON.stringify(widgetConfig);
+        newWidgetContainer.querySelector('.tradingview-widget-container__widget').appendChild(script);
+
+        // Clear the input field after loading the widget for a better user experience
+        marketStatsStockInput.value = '';
+        stockSuggestions.classList.add('hidden'); // Hide suggestions after loading
     }
 
-    // Load initial widget with a default symbol
-    loadTechnicalAnalysisWidget('NASDAQ:AAPL');
+    // Initial load with a default symbol
+    loadTechnicalAnalysisWidget("NASDAQ:AAPL");
 
-    // Handle input changes for autocomplete
+    // Event listener for search button click
+    loadMarketStatsBtn.addEventListener('click', function() {
+        loadTechnicalAnalysisWidget(marketStatsStockInput.value.toUpperCase().trim());
+    });
+
+    // Event listener for Enter key press in input field
+    marketStatsStockInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            e.preventDefault(); // Prevent default form submission
+            loadTechnicalAnalysisWidget(marketStatsStockInput.value.toUpperCase().trim());
+        }
+    });
+
+    // Autocomplete Logic
     marketStatsStockInput.addEventListener('input', function() {
-        const value = this.value.toLowerCase();
-        if (value.length < 1) {
+        const input = this.value.toUpperCase().trim();
+        if (input.length === 0) {
             stockSuggestions.classList.add('hidden');
             return;
         }
 
         const filteredSymbols = popularSymbols.filter(symbol => 
-            symbol.toLowerCase().includes(value)
+            symbol.includes(input)
         );
 
         if (filteredSymbols.length > 0) {
-            stockSuggestions.innerHTML = filteredSymbols
-                .map(symbol => `<div class="px-4 py-2 hover:bg-gray-100 cursor-pointer">${symbol}</div>`)
-                .join('');
+            stockSuggestions.innerHTML = '';
+            filteredSymbols.forEach(symbol => {
+                const div = document.createElement('div');
+                div.className = 'px-4 py-2 cursor-pointer hover:bg-gray-100';
+                div.textContent = symbol;
+                div.addEventListener('click', function() {
+                    marketStatsStockInput.value = symbol;
+                    loadTechnicalAnalysisWidget(symbol);
+                });
+                stockSuggestions.appendChild(div);
+            });
             stockSuggestions.classList.remove('hidden');
         } else {
             stockSuggestions.classList.add('hidden');
         }
     });
 
-    // Handle suggestion clicks
-    stockSuggestions.addEventListener('click', function(e) {
-        if (e.target.classList.contains('cursor-pointer')) {
-            marketStatsStockInput.value = e.target.textContent;
-            stockSuggestions.classList.add('hidden');
-            loadTechnicalAnalysisWidget(e.target.textContent);
-        }
-    });
-
-    // Handle load button click
-    loadMarketStatsBtn.addEventListener('click', function() {
-        loadTechnicalAnalysisWidget(marketStatsStockInput.value);
-    });
-
-    // Handle Enter key
-    marketStatsStockInput.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-            loadTechnicalAnalysisWidget(this.value);
-        }
-    });
-
-    // Close suggestions when clicking outside
+    // Hide suggestions when clicking outside
     document.addEventListener('click', function(e) {
         if (!marketStatsStockInput.contains(e.target) && !stockSuggestions.contains(e.target)) {
             stockSuggestions.classList.add('hidden');
         }
     });
+
 });
 </script>
 {{ end }} 

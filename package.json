@@ -4,13 +4,13 @@
   "description": "Stock market tracking and learning platform",
   "scripts": {
     "build": "hugo --gc --minify",
-    "build:css": "tailwindcss -i ./assets/css/main.css -o ./assets/css/main.min.css --config ./tailwind.config.js && cp ./assets/css/old-styles.css ./assets/css/old-styles.min.css"
+    "build:css": "tailwindcss -i ./assets/css/main.css -o ./assets/css/main.min.css --config ./tailwind.config.js && cp ./assets/css/custom.css ./assets/css/custom.min.css"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.16",
-    "autoprefixer": "^10.4.21",
-    "postcss": "^8.5.4",
-    "tailwindcss": "^3.4.1"
+    "@tailwindcss/typography": "^0.5.10",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.31",
+    "tailwindcss": "^3.3.5"
   },
   "engines": {
     "node": ">=18.0.0"
