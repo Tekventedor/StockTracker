@@ -3,11 +3,10 @@
   "version": "1.0.0",
   "description": "Stock market tracking and learning platform",
   "scripts": {
-    "build": "hugo --gc --minify",
-    "build:css": "npm run build:css:v3 && npm run build:css:v4 && node scripts/switch-tailwind.js",
-    "build:css:v3": "./node_modules/.bin/tailwindcss -i ./assets/css/main.css -o ./assets/css/main.v3.min.css --config ./tailwind.v3.config.js",
-    "build:css:v4": "./node_modules/.bin/tailwindcss -i ./assets/css/main.css -o ./assets/css/main.v4.min.css --config ./tailwind.v4.config.js",
-    "postbuild:css": "cp ./assets/css/custom.css ./assets/css/custom.min.css"
+    "build": "npm run build:css && hugo --gc --minify",
+    "build:css": "npm run build:css:v3 && npm run build:css:v4",
+    "build:css:v3": "tailwindcss -c tailwind.v3.config.js -o static/css/v3.css --minify",
+    "build:css:v4": "tailwindcss -c tailwind.v4.config.js -o static/css/v4.css --minify"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.10",

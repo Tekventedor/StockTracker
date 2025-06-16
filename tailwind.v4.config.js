@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
   content: [
     "./layouts/**/*.html",
     "./content/**/*.{html,md}",
@@ -22,29 +22,29 @@ export default {
           950: '#1e1b4b',
         },
       },
-      typography: {
+      typography: (theme) => ({
         DEFAULT: {
           css: {
-            color: 'rgb(var(--color-gray-700))',
+            color: theme('colors.gray.700'),
             maxWidth: '65ch',
             '[class~="lead"]': {
-              color: 'rgb(var(--color-gray-600))',
+              color: theme('colors.gray.600'),
               fontSize: '1.25em',
               lineHeight: '1.6',
               marginTop: '2em',
               marginBottom: '2em',
             },
             a: {
-              color: 'rgb(var(--color-indigo-600))',
+              color: theme('colors.indigo.600'),
               textDecoration: 'none',
               fontWeight: '500',
               '&:hover': {
-                color: 'rgb(var(--color-indigo-500))',
+                color: theme('colors.indigo.500'),
                 textDecoration: 'underline',
               },
             },
             strong: {
-              color: 'rgb(var(--color-gray-900))',
+              color: theme('colors.gray.900'),
               fontWeight: '600',
             },
             'ol > li': {
@@ -59,12 +59,12 @@ export default {
               content: 'counter(list-item) "."',
               position: 'absolute',
               fontWeight: '400',
-              color: 'rgb(var(--color-gray-500))',
+              color: theme('colors.gray.500'),
             },
             'ul > li::before': {
               content: '""',
               position: 'absolute',
-              backgroundColor: 'rgb(var(--color-gray-300))',
+              backgroundColor: theme('colors.gray.300'),
               borderRadius: '50%',
               width: '0.375em',
               height: '0.375em',
@@ -72,7 +72,7 @@ export default {
               left: '0.25em',
             },
             hr: {
-              borderColor: 'rgb(var(--color-gray-200))',
+              borderColor: theme('colors.gray.200'),
               borderTopWidth: 1,
               marginTop: '3em',
               marginBottom: '3em',
@@ -80,16 +80,16 @@ export default {
             blockquote: {
               fontWeight: '500',
               fontStyle: 'italic',
-              color: 'rgb(var(--color-gray-900))',
+              color: theme('colors.gray.900'),
               borderLeftWidth: '0.25rem',
-              borderLeftColor: 'rgb(var(--color-indigo-500))',
+              borderLeftColor: theme('colors.indigo.500'),
               quotes: '"\\201C""\\201D""\\2018""\\2019"',
               marginTop: '1.6em',
               marginBottom: '1.6em',
               paddingLeft: '1em',
             },
             h1: {
-              color: 'rgb(var(--color-gray-900))',
+              color: theme('colors.gray.900'),
               fontWeight: '700',
               fontSize: '2.25em',
               marginTop: '0',
@@ -97,7 +97,7 @@ export default {
               lineHeight: '1.1111111',
             },
             h2: {
-              color: 'rgb(var(--color-gray-900))',
+              color: theme('colors.gray.900'),
               fontWeight: '600',
               fontSize: '1.5em',
               marginTop: '2em',
@@ -105,7 +105,7 @@ export default {
               lineHeight: '1.3333333',
             },
             h3: {
-              color: 'rgb(var(--color-gray-900))',
+              color: theme('colors.gray.900'),
               fontWeight: '600',
               fontSize: '1.25em',
               marginTop: '1.6em',
@@ -113,23 +113,23 @@ export default {
               lineHeight: '1.6',
             },
             h4: {
-              color: 'rgb(var(--color-gray-900))',
+              color: theme('colors.gray.900'),
               fontWeight: '600',
               marginTop: '1.5em',
               marginBottom: '0.5em',
               lineHeight: '1.5',
             },
             'figure figcaption': {
-              color: 'rgb(var(--color-gray-500))',
+              color: theme('colors.gray.500'),
               fontSize: '0.875em',
               lineHeight: '1.4285714',
               marginTop: '0.8571429em',
             },
             code: {
-              color: 'rgb(var(--color-gray-900))',
+              color: theme('colors.gray.900'),
               fontWeight: '600',
               fontSize: '0.875em',
-              backgroundColor: 'rgb(var(--color-gray-100))',
+              backgroundColor: theme('colors.gray.100'),
               padding: '0.2em 0.4em',
               borderRadius: '0.25rem',
             },
@@ -140,11 +140,11 @@ export default {
               content: '"`"',
             },
             'a code': {
-              color: 'rgb(var(--color-indigo-600))',
+              color: theme('colors.indigo.600'),
             },
             pre: {
-              color: 'rgb(var(--color-gray-200))',
-              backgroundColor: 'rgb(var(--color-gray-800))',
+              color: theme('colors.gray.200'),
+              backgroundColor: theme('colors.gray.800'),
               overflowX: 'auto',
               fontSize: '0.875em',
               lineHeight: '1.7142857',
@@ -180,10 +180,10 @@ export default {
               lineHeight: '1.7142857',
             },
             thead: {
-              color: 'rgb(var(--color-gray-900))',
+              color: theme('colors.gray.900'),
               fontWeight: '600',
               borderBottomWidth: '1px',
-              borderBottomColor: 'rgb(var(--color-gray-400))',
+              borderBottomColor: theme('colors.gray.400'),
             },
             'thead th': {
               verticalAlign: 'bottom',
@@ -193,7 +193,7 @@ export default {
             },
             'tbody tr': {
               borderBottomWidth: '1px',
-              borderBottomColor: 'rgb(var(--color-gray-200))',
+              borderBottomColor: theme('colors.gray.200'),
             },
             'tbody tr:last-child': {
               borderBottomWidth: '0',
@@ -204,7 +204,7 @@ export default {
             },
           },
         },
-      },
+      }),
     },
   },
   plugins: [
