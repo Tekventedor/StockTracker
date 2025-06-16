@@ -33,13 +33,21 @@
         </div>
         <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {{ range .Pages }}
-            <a href="{{ .RelPermalink }}" class="article-card group block bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow" data-difficulty="{{ range .Params.difficulty }}{{ . }}{{ end }}">
+            <a href="{{ .RelPermalink }}" class="article-card group block bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow" data-difficulty="{{ with .Params.difficulty }}{{ if reflect.IsSlice . }}{{ index . 0 }}{{ else }}{{ . }}{{ end }}{{ end }}">
                 <article class="p-6">
                     <div class="flex flex-wrap gap-2 mb-4">
-                        {{ range .Params.difficulty }}
-                        <span class="difficulty-badge {{ if eq . "Beginner" }}beginner{{ else if eq . "Intermediate" }}intermediate{{ else }}advanced{{ end }}">
-                            {{ . }}
-                        </span>
+                        {{ with .Params.difficulty }}
+                            {{ if reflect.IsSlice . }}
+                                {{ range . }}
+                                    <span class="difficulty-badge {{ if eq . "Beginner" }}beginner{{ else if eq . "Intermediate" }}intermediate{{ else }}advanced{{ end }}">
+                                        {{ . }}
+                                    </span>
+                                {{ end }}
+                            {{ else }}
+                                <span class="difficulty-badge {{ if eq . "Beginner" }}beginner{{ else if eq . "Intermediate" }}intermediate{{ else }}advanced{{ end }}">
+                                    {{ . }}
+                                </span>
+                            {{ end }}
                         {{ end }}
                     </div>
 
@@ -48,10 +56,14 @@
 
                     <!-- Tags -->
                     <div class="flex flex-wrap gap-2 mb-4">
-                        {{ range .Params.topics }}
-                        <span class="topic-tag">
-                            {{ . }}
-                        </span>
+                        {{ with .Params.topics }}
+                            {{ if reflect.IsSlice . }}
+                                {{ range . }}
+                                    <span class="topic-tag">{{ . }}</span>
+                                {{ end }}
+                            {{ else }}
+                                <span class="topic-tag">{{ . }}</span>
+                            {{ end }}
                         {{ end }}
                     </div>
 
