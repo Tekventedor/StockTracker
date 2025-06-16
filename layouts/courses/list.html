@@ -3,12 +3,7 @@
     <!-- Stock Market Overview -->
     <div class="mt-8 mb-8">
         <div class="bg-white rounded-lg shadow-sm p-4 h-[400px]">
-            <div class="tradingview-widget-container h-full">
-                <div class="tradingview-widget-container__widget h-full"></div>
-                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
-                {{ $.Site.Data.tradingview | jsonify | safeJS }}
-                </script>
-            </div>
+            {{ readFile "static/tradingview-widget.html" | safeHTML }}
         </div>
     </div>
 
