@@ -1,4 +1,4 @@
-{
+window.TradingViewWidget = {
     "tabs": [
         {
             "title": "Indices",
@@ -9,4 +9,4 @@
             ]
         }
     ]
-} 
+}; 
