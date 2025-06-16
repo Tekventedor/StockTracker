@@ -7,6 +7,7 @@
   HUGO_ENV = "production"
   HUGO_ENABLEGITINFO = "true"
   NODE_VERSION = "18"
+  TAILWIND_VERSION = "4.0.14"
 
 [[redirects]]
   from = "/*"

@@ -4,14 +4,17 @@
   "description": "Stock market tracking and learning platform",
   "scripts": {
     "build": "hugo --gc --minify",
-    "build:css": "tailwindcss -i ./assets/css/main.css -o ./assets/css/main.min.css --config ./tailwind.config.js && cp ./assets/css/custom.css ./assets/css/custom.min.css"
+    "build:css": "npm run build:css:v3 && npm run build:css:v4 && node scripts/switch-tailwind.js",
+    "build:css:v3": "tailwindcss -i ./assets/css/main.css -o ./assets/css/main.v3.min.css --config ./tailwind.v3.config.js",
+    "build:css:v4": "tailwindcss -i ./assets/css/main.css -o ./assets/css/main.v4.min.css --config ./tailwind.v4.config.js",
+    "postbuild:css": "cp ./assets/css/custom.css ./assets/css/custom.min.css"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.10",
+    "@tailwindcss/typography": "^0.5.16",
     "@tailwindcss/forms": "^0.5.7",
     "autoprefixer": "^10.4.16",
     "postcss": "^8.4.31",
-    "tailwindcss": "^3.3.5"
+    "tailwindcss": "^4.0.14"
   },
   "engines": {
     "node": ">=18.0.0"
