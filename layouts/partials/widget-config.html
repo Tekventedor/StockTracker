@@ -3,9 +3,9 @@
         "tabs" (slice (dict
             "title" "Indices"
             "symbols" (slice
-                (dict "s" "FOREXCOM:SPXUSD" "d" "S&P 500")
-                (dict "s" "FOREXCOM:NSXUSD" "d" "Nasdaq 100")
-                (dict "s" "FOREXCOM:DJI" "d" "Dow 30")
+                (dict "s" "FOREXCOM_SPXUSD" "d" "S&P 500")
+                (dict "s" "FOREXCOM_NSXUSD" "d" "Nasdaq 100")
+                (dict "s" "FOREXCOM_DJI" "d" "Dow 30")
             )
         ))
         "colorTheme" "light"
@@ -28,9 +28,9 @@
             "name" "Indices"
             "originalName" "Indices"
             "symbols" (slice
-                (dict "name" "FOREXCOM:SPXUSD" "displayName" "S&P 500")
-                (dict "name" "FOREXCOM:NSXUSD" "displayName" "Nasdaq 100")
-                (dict "name" "FOREXCOM:DJI" "displayName" "Dow 30")
+                (dict "name" "FOREXCOM_SPXUSD" "displayName" "S&P 500")
+                (dict "name" "FOREXCOM_NSXUSD" "displayName" "Nasdaq 100")
+                (dict "name" "FOREXCOM_DJI" "displayName" "Dow 30")
             )
         ))
         "showSymbolLogo" true
@@ -45,4 +45,23 @@
         marketOverview: {{ $config.marketOverview | jsonify | safeJS }},
         marketQuotes: {{ $config.marketQuotes | jsonify | safeJS }}
     };
+
+    // Replace underscores with colons in symbol names
+    document.addEventListener('DOMContentLoaded', function() {
+        if (window.widgetConfigs) {
+            // Fix market overview symbols
+            window.widgetConfigs.marketOverview.tabs.forEach(tab => {
+                tab.symbols.forEach(symbol => {
+                    symbol.s = symbol.s.replace('_', ':');
+                });
+            });
+
+            // Fix market quotes symbols
+            window.widgetConfigs.marketQuotes.symbolsGroups.forEach(group => {
+                group.symbols.forEach(symbol => {
+                    symbol.name = symbol.name.replace('_', ':');
+                });
+            });
+        }
+    });
 </script> 
