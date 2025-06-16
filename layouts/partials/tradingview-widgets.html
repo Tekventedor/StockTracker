@@ -1,8 +1,0 @@
-{{ $widgets := site.Data.widgets }}
-<script type="text/javascript">
-    // Market Overview Widget
-    window.TradingViewWidget = JSON.parse('{{ $widgets.marketOverview | jsonify | safeJS }}');
-
-    // Market Quotes Widget
-    window.MarketQuotesWidget = JSON.parse('{{ $widgets.marketQuotes | jsonify | safeJS }}');
-</script> 

@@ -13,18 +13,12 @@
     <div class="grid grid-cols-1 gap-8">
         <!-- Market Overview Widget -->
         <div class="bg-white rounded-lg shadow-sm p-4">
-            <div class="tradingview-widget-container h-[600px]">
-                <div class="tradingview-widget-container__widget h-full"></div>
-                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async></script>
-            </div>
+            {{ partial "tradingview.html" (dict "type" "market-overview" "height" "600") }}
         </div>
 
         <!-- Major Indices Widget -->
         <div class="bg-white rounded-lg shadow-sm p-4">
-            <div class="tradingview-widget-container h-[400px]">
-                <div class="tradingview-widget-container__widget h-full"></div>
-                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async></script>
-            </div>
+            {{ partial "tradingview.html" (dict "type" "market-quotes" "height" "400") }}
         </div>
     </div>
 
