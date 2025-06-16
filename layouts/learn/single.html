@@ -1,7 +1,7 @@
 {{ define "main" }}
 {{ partial "learn-css.html" . }}
 
-<div class="@container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
     <div class="lg:grid lg:grid-cols-12 lg:gap-8 relative">
         <!-- Sidebar with TOC -->
         {{ if .TableOfContents }}
@@ -81,7 +81,7 @@
 
                 <!-- Article Content -->
                 <div class="p-8">
-                    <div class="prose prose-lg @sm:prose-xl">
+                    <div class="prose prose-lg sm:prose-xl">
                         {{ $content := .Content }}
                         {{ $content = replace $content "## What You'll Learn" "<div class='learn-section'><h2>What You'll Learn</h2>" }}
                         {{ $content = replace $content "## Prerequisites" "<div class='prerequisites-section'><h2>Prerequisites</h2>" }}

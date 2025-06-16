@@ -104,24 +104,38 @@
 
     /* TOC styles */
     .toc-content {
-        @apply text-sm;
+        font-size: 0.875rem;
     }
     
     .toc-content ul {
-        @apply space-y-1;
+        margin-top: 0.25rem;
+        margin-bottom: 0.25rem;
     }
     
     .toc-content ul ul {
-        @apply mt-1 ml-3 border-l border-gray-200 pl-3;
+        margin-top: 0.25rem;
+        margin-left: 0.75rem;
+        border-left: 1px solid #e5e7eb;
+        padding-left: 0.75rem;
     }
     
     .toc-content a {
-        @apply block py-1 text-gray-600 hover:text-blue-600 transition-colors;
+        display: block;
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+        color: #4b5563;
         text-decoration: none;
+        transition-property: color;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        transition-duration: 150ms;
+    }
+    
+    .toc-content a:hover {
+        color: #2563eb;
     }
     
     .toc-content li {
-        @apply leading-normal;
+        line-height: 1.5;
     }
 
     @media (max-width: 1024px) {
