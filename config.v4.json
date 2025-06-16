@@ -1,0 +1,17 @@
+{
+  "baseURL": "/",
+  "languageCode": "en-us",
+  "title": "Stock Tracker",
+  "theme": "hugo-theme-stock-tracker",
+  "params": {
+    "description": "Track and analyze stocks with real-time data",
+    "version": "v4"
+  },
+  "module": {
+    "imports": [
+      {
+        "path": "github.com/gohugoio/hugo-mod-bootstrap-scss/v5"
+      }
+    ]
+  }
+} 

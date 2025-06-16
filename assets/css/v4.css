@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles for v4 */
+.v3-only {
+    display: none;
+}
+
+.v4-only {
+    display: block;
+} 

@@ -12,9 +12,9 @@
                 <h3 class="text-xl font-semibold text-green-800 mb-2">Beginner</h3>
                 <p class="text-green-600 mb-4">Start your trading journey here</p>
             </div>
-            <div id="intermediate" onclick="filterByDifficulty('Intermediate')" class="cursor-pointer p-6 bg-indigo-50 rounded-lg shadow hover:shadow-lg transition-shadow text-center">
-                <h3 class="text-xl font-semibold text-indigo-800 mb-2">Intermediate</h3>
-                <p class="text-indigo-600 mb-4">Advance your knowledge</p>
+            <div id="intermediate" onclick="filterByDifficulty('Intermediate')" class="cursor-pointer p-6 bg-blue-50 rounded-lg shadow hover:shadow-lg transition-shadow text-center">
+                <h3 class="text-xl font-semibold text-blue-800 mb-2">Intermediate</h3>
+                <p class="text-blue-600 mb-4">Advance your knowledge</p>
             </div>
             <div id="advanced" onclick="filterByDifficulty('Advanced')" class="cursor-pointer p-6 bg-purple-50 rounded-lg shadow hover:shadow-lg transition-shadow text-center">
                 <h3 class="text-xl font-semibold text-purple-800 mb-2">Advanced</h3>
@@ -27,51 +27,42 @@
     <div class="mb-12">
         <div class="flex items-center gap-2 mb-6">
             <h2 class="text-2xl font-semibold text-gray-900">Latest Articles</h2>
-            <button onclick="filterByDifficulty('all')" class="text-base text-indigo-600 hover:text-indigo-800">
+            <button onclick="filterByDifficulty('all')" class="text-base text-blue-600 hover:text-blue-800">
                 (Show All)
             </button>
         </div>
         <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {{ range .Pages }}
-            <a href="{{ .RelPermalink }}" class="article-card group block bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow" data-difficulty="{{ with .Params.difficulty }}{{ if reflect.IsSlice . }}{{ index . 0 }}{{ else }}{{ . }}{{ end }}{{ end }}">
+            <a href="/learn/article/{{ .File.ContentBaseName }}/" class="article-card group block bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow" data-difficulty="{{ range .Params.difficulty }}{{ . }}{{ end }}">
                 <article class="p-6">
                     <div class="flex flex-wrap gap-2 mb-4">
-                        {{ with .Params.difficulty }}
-                            {{ if reflect.IsSlice . }}
-                                {{ range . }}
-                                    <span class="difficulty-badge {{ if eq . "Beginner" }}beginner{{ else if eq . "Intermediate" }}intermediate{{ else }}advanced{{ end }}">
-                                        {{ . }}
-                                    </span>
-                                {{ end }}
-                            {{ else }}
-                                <span class="difficulty-badge {{ if eq . "Beginner" }}beginner{{ else if eq . "Intermediate" }}intermediate{{ else }}advanced{{ end }}">
-                                    {{ . }}
-                                </span>
-                            {{ end }}
+                        {{ range .Params.difficulty }}
+                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium 
+                            {{ if eq . "Beginner" }}bg-green-100 text-green-800
+                            {{ else if eq . "Intermediate" }}bg-blue-100 text-blue-800
+                            {{ else }}bg-purple-100 text-purple-800{{ end }}">
+                            {{ . }}
+                        </span>
                         {{ end }}
                     </div>
 
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2 group-hover:text-indigo-600 transition-colors">{{ .Title }}</h3>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">{{ .Title }}</h3>
                     <p class="text-gray-600 mb-4">{{ .Description }}</p>
 
                     <!-- Tags -->
                     <div class="flex flex-wrap gap-2 mb-4">
-                        {{ with .Params.topics }}
-                            {{ if reflect.IsSlice . }}
-                                {{ range . }}
-                                    <span class="topic-tag">{{ . }}</span>
-                                {{ end }}
-                            {{ else }}
-                                <span class="topic-tag">{{ . }}</span>
-                            {{ end }}
+                        {{ range .Params.topics }}
+                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+                            {{ . }}
+                        </span>
                         {{ end }}
                     </div>
 
                     <!-- Read More -->
                     <div class="flex justify-end">
-                        <span class="read-more">
+                        <span class="inline-flex items-center text-blue-600 group-hover:text-blue-800">
                             Read More
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                             </svg>
                         </span>

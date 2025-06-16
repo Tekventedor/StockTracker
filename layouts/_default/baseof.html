@@ -1,29 +1,26 @@
 <!DOCTYPE html>
-<html lang="{{ .Site.LanguageCode | default "en" }}">
+<html lang="{{ .Site.LanguageCode }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
-    <link rel="stylesheet" href="/css/v4.css">
-    <link rel="stylesheet" href="/css/v3.css">
-    {{ block "head" . }}{{ end }}
+    <title>{{ .Title }} | {{ .Site.Title }}</title>
+    
+    <!-- Load both CSS bundles -->
+    <link rel="stylesheet" href="{{ "css/v3.css" | relURL }}">
+    <link rel="stylesheet" href="{{ "css/v4.css" | relURL }}">
+    
+    <!-- TradingView Widget -->
+    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+    <script type="text/javascript" src="{{ "js/widget-config.js" | relURL }}"></script>
+    <script type="text/javascript" src="{{ "js/widgets.js" | relURL }}"></script>
 </head>
-<body class="bg-gray-100">
+<body class="bg-gray-50">
     {{ partial "header.html" . }}
-    <main class="container mx-auto px-4 py-8">
+    
+    <main>
         {{ block "main" . }}{{ end }}
     </main>
+    
     {{ partial "footer.html" . }}
-    
-    <!-- Load TradingView widget script -->
-    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-    
-    <!-- Load widget configuration -->
-    <script type="text/javascript" src="/js/widget-config.js"></script>
-    
-    <!-- Initialize widgets -->
-    <script type="text/javascript" src="/js/widgets.js"></script>
-    
-    {{ block "scripts" . }}{{ end }}
 </body>
 </html> 

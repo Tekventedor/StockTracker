@@ -1,11 +1,15 @@
-{{ $styles := resources.Get "css/learn.css" }}
-{{ if $styles }}
-  {{ $styles = $styles | resources.PostCSS }}
-  {{ if hugo.IsDevelopment }}
-    <link rel="stylesheet" href="{{ $styles.RelPermalink }}">
-  {{ else }}
-    {{ $styles = $styles | minify | fingerprint }}
-    <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}" crossorigin="anonymous">
+{{ with (templates.Defer (dict "key" "learn")) }}
+  {{ with resources.Get "css/learn.css" }}
+    {{ $opts := dict "minify" (not hugo.IsDevelopment) }}
+    {{ with . | css.TailwindCSS $opts }}
+      {{ if hugo.IsDevelopment }}
+        <link rel="stylesheet" href="{{ .RelPermalink }}">
+      {{ else }}
+        {{ with . | fingerprint }}
+          <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+        {{ end }}
+      {{ end }}
+    {{ end }}
   {{ end }}
 {{ end }}
 
@@ -81,7 +85,16 @@
     /* Nested list styling */
     .prose li > ul,
     .prose li > ol {
-        margin: 0.5em 0;
+        margin: 0.5em 0 0.5em 0;
+        padding-left: 2em;
+    }
+
+    .prose li > ul {
+        list-style-type: circle;
+    }
+
+    .prose li > ul > li > ul {
+        list-style-type: square;
     }
 
     /* Remove custom bullets and ensure proper text wrapping */
@@ -104,38 +117,24 @@
 
     /* TOC styles */
     .toc-content {
-        font-size: 0.875rem;
+        @apply text-sm;
     }
     
     .toc-content ul {
-        margin-top: 0.25rem;
-        margin-bottom: 0.25rem;
+        @apply space-y-1;
     }
     
     .toc-content ul ul {
-        margin-top: 0.25rem;
-        margin-left: 0.75rem;
-        border-left: 1px solid #e5e7eb;
-        padding-left: 0.75rem;
+        @apply mt-1 ml-3 border-l border-gray-200 pl-3;
     }
     
     .toc-content a {
-        display: block;
-        padding-top: 0.25rem;
-        padding-bottom: 0.25rem;
-        color: #4b5563;
+        @apply block py-1 text-gray-600 hover:text-blue-600 transition-colors;
         text-decoration: none;
-        transition-property: color;
-        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-        transition-duration: 150ms;
-    }
-    
-    .toc-content a:hover {
-        color: #2563eb;
     }
     
     .toc-content li {
-        line-height: 1.5;
+        @apply leading-normal;
     }
 
     @media (max-width: 1024px) {

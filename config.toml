@@ -8,9 +8,13 @@
     url = "/learn/"
     weight = 2
   [[menu.main]]
+    name = "Glossary"
+    url = "/glossary/"
+    weight = 3
+  [[menu.main]]
     name = "Markets"
     url = "/markets/"
-    weight = 3 
+    weight = 4 
 
 [taxonomies]
   difficulty = "difficulty"
@@ -28,7 +32,6 @@
   [[build.cachebusters]]
     source = '(postcss|tailwind)\.config\.js'
     target = 'css'
-  writeStats = true
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]
@@ -40,20 +43,4 @@
   [[module.mounts]]
     disableWatch = true
     source = 'hugo_stats.json'
-    target = 'assets/notwatching/hugo_stats.json'
-
-[markup]
-  [markup.goldmark]
-    [markup.goldmark.renderer]
-      unsafe = true
-  [markup.highlight]
-    noClasses = false
-    style = "monokai"
-
-[server]
-  disableFastRender = true
-
-[template]
-  [template.escape]
-    # Disable automatic escaping of colons in JSON
-    json = false 
+    target = 'assets/notwatching/hugo_stats.json' 
