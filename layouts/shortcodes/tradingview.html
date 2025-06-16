@@ -12,7 +12,28 @@
 </div>
 {{ end }}
 
-<!-- Load TradingView widget script -->
-<script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
 <!-- Load widget configuration -->
-<script type="text/javascript" src="/js/widget-config.js"></script> 
+{{ partial "widget-config.html" . }}
+
+<!-- Initialize widgets -->
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize Market Overview widget
+        const marketOverviewContainer = document.querySelector('.market-overview-widget');
+        if (marketOverviewContainer && window.widgetConfigs) {
+            new TradingView.widget({
+                ...window.widgetConfigs.marketOverview,
+                container_id: marketOverviewContainer.id
+            });
+        }
+
+        // Initialize Market Quotes widget
+        const marketQuotesContainer = document.querySelector('.market-quotes-widget');
+        if (marketQuotesContainer && window.widgetConfigs) {
+            new TradingView.widget({
+                ...window.widgetConfigs.marketQuotes,
+                container_id: marketQuotesContainer.id
+            });
+        }
+    });
+</script> 
