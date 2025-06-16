@@ -5,8 +5,8 @@
   "scripts": {
     "build": "hugo --gc --minify",
     "build:css": "npm run build:css:v3 && npm run build:css:v4 && node scripts/switch-tailwind.js",
-    "build:css:v3": "tailwindcss -i ./assets/css/main.css -o ./assets/css/main.v3.min.css --config ./tailwind.v3.config.js",
-    "build:css:v4": "tailwindcss -i ./assets/css/main.css -o ./assets/css/main.v4.min.css --config ./tailwind.v4.config.js",
+    "build:css:v3": "npx tailwindcss -i ./assets/css/main.css -o ./assets/css/main.v3.min.css --config ./tailwind.v3.config.js",
+    "build:css:v4": "npx tailwindcss -i ./assets/css/main.css -o ./assets/css/main.v4.min.css --config ./tailwind.v4.config.js",
     "postbuild:css": "cp ./assets/css/custom.css ./assets/css/custom.min.css"
   },
   "devDependencies": {
