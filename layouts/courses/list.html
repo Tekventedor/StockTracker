@@ -6,7 +6,7 @@
             <div class="tradingview-widget-container h-full">
                 <div class="tradingview-widget-container__widget h-full"></div>
                 <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
-                {{ $.Site.Data.widgets.market_overview | jsonify | safeJS }}
+                {{ $.Site.Data.tradingview | jsonify | safeJS }}
                 </script>
             </div>
         </div>
