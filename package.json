@@ -8,6 +8,8 @@
     "build": "npm run build:css && hugo --minify"
   },
   "dependencies": {
+    "@tailwindcss/forms": "^0.5.7",
+    "@tailwindcss/typography": "^0.5.9",
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.21",
     "postcss-cli": "^10.1.0",
